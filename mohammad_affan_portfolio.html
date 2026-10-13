@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Mohammad Affan, Cloud Engineer with AWS and DevOps skills." />
+  <title>Mohammad Affan | Cloud Engineer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2d;
+      --panel-light: #17223a;
+      --text: #edf2ff;
+      --muted: #a9b5cf;
+      --accent: #7c9cff;
+      --accent-2: #55dfc0;
+      --border: rgba(177, 196, 255, .16);
+      --shadow: 0 18px 50px rgba(0, 0, 0, .25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 85% 5%, rgba(85, 223, 192, .10), transparent 26rem),
+        radial-gradient(circle at 10% 10%, rgba(124, 156, 255, .15), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, .82);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .02em; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 24px; color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 94px 0 80px; display: grid; grid-template-columns: 1.4fr .8fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--accent-2); font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; }
+    h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.055em; margin: 14px 0 20px; }
+    h1 .highlight { color: var(--accent); }
+    .hero p { max-width: 650px; color: var(--muted); font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); font-weight: 700; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--accent); color: #0b1020; border-color: transparent; }
+    .button.secondary { background: rgba(255,255,255,.03); }
+    .profile-card { padding: 28px; border-radius: 24px; border: 1px solid var(--border); background: linear-gradient(145deg, rgba(23,34,58,.95), rgba(18,26,45,.85)); box-shadow: var(--shadow); }
+    .avatar { width: 76px; height: 76px; display: grid; place-items: center; border-radius: 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1020; font-size: 1.6rem; font-weight: 900; margin-bottom: 18px; }
+    .profile-card h2 { margin: 0 0 4px; font-size: 1.25rem; }
+    .profile-card .role { color: var(--accent-2); margin: 0 0 18px; font-size: .95rem; }
+    .profile-detail { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); font-size: .92rem; margin: 10px 0; overflow-wrap: anywhere; }
+    section { padding: 54px 0; }
+    .section-heading { margin-bottom: 26px; }
+    .section-heading .eyebrow { margin-bottom: 6px; }
+    h2.section-title { margin: 0; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -.035em; }
+    .section-intro { max-width: 680px; color: var(--muted); margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--border); border-radius: 18px; padding: 22px; background: rgba(18,26,45,.72); }
+    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .skill-icon { font-size: 1.35rem; margin-bottom: 12px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .chip { border: 1px solid var(--border); background: rgba(124,156,255,.08); padding: 6px 10px; border-radius: 999px; color: #d9e2ff; font-size: .86rem; }
+    .timeline { border-left: 2px solid var(--border); margin-left: 8px; padding-left: 24px; }
+    .timeline-item { position: relative; padding: 0 0 28px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; left: -32px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 5px rgba(85,223,192,.12); }
+    .timeline-item h3 { margin: 0; font-size: 1.08rem; }
+    .meta { color: var(--accent-2); font-size: .9rem; margin: 4px 0 8px; }
+    .timeline-item p { color: var(--muted); margin: 0; }
+    .education-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px; border-radius: 22px; border: 1px solid var(--border); background: linear-gradient(120deg, rgba(124,156,255,.12), rgba(85,223,192,.08)); }
+    .contact-panel p { color: var(--muted); margin: 6px 0 0; }
+    footer { padding: 26px 0 34px; color: var(--muted); border-top: 1px solid var(--border); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; padding-top: 64px; gap: 30px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+      .nav { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      .nav-links { gap: 14px; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1100px); }
+      .grid, .education-list { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      section { padding: 40px 0; }
+      .profile-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">MA<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Cloud · DevOps · Infrastructure</div>
+        <h1>Hi, I'm <span class="highlight">Mohammad Affan.</span></h1>
+        <p>
+          Aspiring Cloud Engineer with foundational knowledge of AWS services and DevOps tools.
+          Interested in supporting reliable cloud infrastructure and learning practical automation workflows.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#contact">Contact Me</a>
+          <a class="button secondary" href="#skills">Explore My Skills</a>
+        </div>
+      </div>
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="avatar" aria-hidden="true">MA</div>
+        <h2>Mohammad Affan</h2>
+        <p class="role">Cloud Engineer</p>
+        <div class="profile-detail">📍 <span>Faridabad, Haryana, India</span></div>
+        <div class="profile-detail">✉️ <a href="mailto:mohammadaffan2223@gmail.com">mohammadaffan2223@gmail.com</a></div>
+        <div class="profile-detail">☎️ <a href="tel:7428718139">742-871-8139</a></div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2 class="section-title">About Me</h2>
+          <p class="section-intro">
+            I have studied cloud computing and AWS, and have exposure to cloud-based operations and infrastructure support.
+            I’m building my foundation across cloud services, Linux, version control, containers, and CI/CD tools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I work with</div>
+          <h2 class="section-title">Technical Skills</h2>
+          <p class="section-intro">Tools and services listed in my resume.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="skill-icon" aria-hidden="true">☁️</div>
+            <h3>AWS Cloud Services</h3>
+            <p>Core AWS services for compute, storage, databases, and serverless workloads.</p>
+            <div class="chips">
+              <span class="chip">EC2</span><span class="chip">S3</span><span class="chip">RDS</span>
+              <span class="chip">Lambda</span><span class="chip">EBS</span><span class="chip">EFS</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="skill-icon" aria-hidden="true">🔐</div>
+            <h3>Identity & Networking</h3>
+            <p>Foundational knowledge of AWS access management and virtual networking.</p>
+            <div class="chips">
+              <span class="chip">IAM</span><span class="chip">Users & Roles</span><span class="chip">Policies</span>
+              <span class="chip">VPC</span><span class="chip">Subnets</span><span class="chip">Route Tables</span>
+              <span class="chip">Internet/NAT Gateways</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="skill-icon" aria-hidden="true">⚙️</div>
+            <h3>DevOps Tools</h3>
+            <p>Tools used in version control, operating systems, CI/CD, and containers.</p>
+            <div class="chips">
+              <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Linux</span>
+              <span class="chip">Jenkins</span><span class="chip">Docker</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Professional journey</div>
+          <h2 class="section-title">Internship Experience</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3>INFOPRO LEARNING INC</h3>
+            <div class="meta">September 2025 – December 2025</div>
+            <p>Worked closely with technical systems architecture to support cloud-based operations and infrastructures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Learning & qualifications</div>
+          <h2 class="section-title">Education & Training</h2>
+        </div>
+        <div class="education-list">
+          <article class="card">
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>Rao Neki Ram Memorial College</p>
+            <div class="meta">Gurugram University · 2023–2025</div>
+          </article>
+          <article class="card">
+            <h3>Amazon Web Services Course</h3>
+            <p>IT Vedant, New Delhi</p>
+            <div class="meta">2026</div>
+          </article>
+          <article class="card">
+            <h3>Diploma in Cloud Computing</h3>
+            <p>Jetking, Faridabad</p>
+            <div class="meta">2022</div>
+          </article>
+          <article class="card">
+            <h3>Class XII & Class X</h3>
+            <p>CBSE Board</p>
+            <div class="meta">Class XII: 2022 · Class X: 2020</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">Let's connect</div>
+            <h2 class="section-title">Have an opportunity?</h2>
+            <p>Feel free to contact me about entry-level Cloud Engineer or DevOps opportunities.</p>
+          </div>
+          <a class="button primary" href="mailto:mohammadaffan2223@gmail.com">Email Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Mohammad Affan</span>
+      <span>Cloud Engineer Portfolio · Built with HTML & CSS</span>
+    </div>
+  </footer>
+</body>
+</html>
